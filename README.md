@@ -2,13 +2,17 @@
 
 # Description
 
-Oralstats Aroca is a simplification of the main features of Oralstats (Cabedo 2021). The basic aim is to allow researchers to query and download data from Ameresco Speech Oral Corpus (Albelda and Estellés, online, and freely available at www.corpusameresco.com).
+Oralstats Aroca is a simplification of the main features of Oralstats (Cabedo 2021). The basic aim is to allow researchers to query and download data from Ameresco Speech Oral Corpus (Albelda and Estellés, online, and freely available at www.corpusameresco.com). The script can be adapted to any other oral speech corpora.
 
 # Online version
 
 You can see the script working with Ameresco Corpus at the following link:
 
 https://adrin-cabedo.shinyapps.io/aroca_viewer/
+
+# Tutorial (using Aroca)
+
+You can check a brief tutorial convering the main usage of Oralstats Aroca at https://github.com/acabedo/aroca/tree/main/tutorial
 
 # Citation
 
