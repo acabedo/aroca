@@ -10,13 +10,13 @@ You can see the script working with Ameresco Corpus at the following link:
 
 https://adrin-cabedo.shinyapps.io/aroca_viewer/
 
-# Tutorial (using Aroca)
-
-You can check a brief tutorial convering the main usage of Oralstats Aroca at https://github.com/acabedo/aroca/tree/main/tutorial
-
 # Citation
 
 Cabedo, A. & Carcelén, A. (2021). Oralstats Aroca. Version beta 1.2. Available online at [https://github.com/acabedo/aroca](https://github.com/acabedo/aroca)
+
+# Tutorial (using Aroca)
+
+You can check a brief tutorial convering the main usage of Oralstats Aroca at https://github.com/acabedo/aroca/tree/main/tutorial
 
 # Requirements
 
