@@ -982,7 +982,7 @@ server <- function(input, output,session) {
 filtrado <- eventReactive(input$buscarbttn,{
 req(input$filter1)
 
-    conexion1 <- dbConnect(RPostgreSQL::PostgreSQL(), host = "pgsql03.dinaserver.com",dbname="esvoralstats_aroca", user = "oralstats", host = "XXX",dbname="XXX", user = "XXX", password = "XXX" = "TBoj2J/3-17/")
+    conexion1 <- dbConnect(RPostgreSQL::PostgreSQL(),  host = "XXX",dbname="XXX", user = "XXX", password = "XXX" )
     
     # busqueda <- paste0("select a.token,a.upos,a.lemma,a.alargamiento,b.content from palabras as a left join grupos as b on a.id = b.id where a.token ='",input$filter1,"'","AND a.alargamiento ='",input$filter2,"'")
     if(input$regexsel ==FALSE){
@@ -1027,7 +1027,7 @@ SELECT * from cte where token like '", input$filter1,"'"))} else {NULL}
 corpuscompleto <- reactive({
  
   req(input$relative==TRUE)
-  conexion1 <- dbPool(RPostgreSQL::PostgreSQL(), host = "pgsql03.dinaserver.com",dbname="esvoralstats_aroca", user = "oralstats", host = "XXX",dbname="XXX", user = "XXX", password = "XXX" = "TBoj2J/3-17/")
+  conexion1 <- dbPool(RPostgreSQL::PostgreSQL(),  host = "XXX",dbname="XXX", user = "XXX", password = "XXX" )
   
   # busqueda <- paste0("select a.token,a.upos,a.lemma,a.alargamiento,b.content from palabras as a left join grupos as b on a.id = b.id where a.token ='",input$filter1,"'","AND a.alargamiento ='",input$filter2,"'")
 
@@ -1059,7 +1059,7 @@ contexto <- reactive({
   
     busc <- filtrado()[input$table1_rows_selected,"intervenciones_id"]
     
-    conexion2 <- dbConnect(RPostgreSQL::PostgreSQL(), host = "pgsql03.dinaserver.com",dbname="esvoralstats_aroca", user = "oralstats", host = "XXX",dbname="XXX", user = "XXX", password = "XXX" = "TBoj2J/3-17/")
+    conexion2 <- dbConnect(RPostgreSQL::PostgreSQL(),  host = "XXX",dbname="XXX", user = "XXX", password = "XXX" )
     
     # busqueda <- paste0("select a.token,a.upos,a.lemma,a.alargamiento,b.content from palabras as a left join grupos as b on a.id = b.id where a.token ='",input$filter1,"'","AND a.alargamiento ='",input$filter2,"'")
     texto <- dbGetQuery(conexion2,paste0("WITH cte AS (SELECT lag(time_start_int,2) over(partition by source order by source,time_start_int ASC) as timestart,lag(spk,2) over(partition by source order by source,time_start_int ASC) as spkprev2,lag(intervencion,2) over(partition by source order by source,time_start_int ASC) as prev2,lag(spk,1) over(partition by source order by source,time_start_int ASC) as spkprev1,lag(intervencion,1) over(partition by source order by source,time_start_int ASC) as prev1, spk, intervencion,source,lead(spk,1) over(partition by source order by source,time_start_int ASC) as spkpost1,lead(intervencion,1) over(partition by source order by source,time_start_int ASC) as post1,lead(spk,2) over(partition by source order by source,time_start_int ASC) as spkpost2,lead(intervencion,2) over(partition by source order by source,time_start_int ASC) as post2, lead(time_end_int,2) over(partition by source order by source,time_end_int ASC) as timeend, intervenciones_id from intervenciones order by source,time_start_int ) select * from cte where cte.intervenciones_id = '", busc,"'"))
@@ -1076,7 +1076,7 @@ conversacionselect <- reactive({
     req(input$table1_rows_selected)
     busc <- filtrado()[input$table1_rows_selected,"source"]
 
-    conexion4 <- dbConnect(RPostgreSQL::PostgreSQL(), host = "pgsql03.dinaserver.com",dbname="esvoralstats_aroca", user = "oralstats", host = "XXX",dbname="XXX", user = "XXX", password = "XXX" = "TBoj2J/3-17/")
+    conexion4 <- dbConnect(RPostgreSQL::PostgreSQL(),  host = "XXX",dbname="XXX", user = "XXX", password = "XXX" )
     texto <- dbGetQuery(conexion4,paste0("select * from intervenciones where source = '", busc,"'"))
     dbDisconnect(conexion4)
     texto<-texto%>%rename(inicio=time_start_int,final = time_end_int,contenido=intervencion_export)
@@ -1089,7 +1089,7 @@ conversacionselect <- reactive({
 #   req(input$furioustbl_rows_selected)
 #   busc <- grupos()[input$furioustbl_rows_selected,"source"]
 #   
-#   conexionselgrupos <- dbConnect(RPostgreSQL::PostgreSQL(), host = "pgsql03.dinaserver.com",dbname="esvoralstats_aroca", user = "oralstats", host = "XXX",dbname="XXX", user = "XXX", password = "XXX" = "TBoj2J/3-17/")
+#   conexionselgrupos <- dbConnect(RPostgreSQL::PostgreSQL(),  host = "XXX",dbname="XXX", user = "XXX", password = "XXX" )
 #   texto <- dbGetQuery(conexionselgrupos,paste0("select source,grupo_id,time_start,time_end from grupos where source = '", busc,"'"))
 #   dbDisconnect(conexionselgrupos)
 #   texto<-texto%>%filter(source%in%input$conversselect)%>%rename(inicio=time_start,final = time_end)
@@ -1167,7 +1167,7 @@ output$conversacion <- renderDT(datatable(conversacionselect()%>%select(source,i
 data_r <- reactiveValues(data = invento, name = "invento")
   
 observeEvent(input$esquissebuttn,
-               {conexion3 <- dbConnect(RPostgreSQL::PostgreSQL(), host = "pgsql03.dinaserver.com",dbname="esvoralstats_aroca", user = "oralstats", host = "XXX",dbname="XXX", user = "XXX", password = "XXX" = "TBoj2J/3-17/")
+               {conexion3 <- dbConnect(RPostgreSQL::PostgreSQL(),  host = "XXX",dbname="XXX", user = "XXX", password = "XXX" )
                corpus3 <- dbGetQuery(conexion3,"select * from hablantes left join conversaciones on hablantes.source = conversaciones.source")
                dbDisconnect(conexion3)
                corpus3<-corpus3[, !duplicated(colnames(corpus3))]
@@ -1176,7 +1176,7 @@ observeEvent(input$esquissebuttn,
                                 data_r$name <- "corpus3"})
   # 
   # observe({
-  #   # conexion3 <- dbConnect(RPostgreSQL::PostgreSQL(), host = "pgsql03.dinaserver.com",dbname="esvoralstats_aroca", user = "oralstats", host = "XXX",dbname="XXX", user = "XXX", password = "XXX" = "TBoj2J/3-17/")
+  #   # conexion3 <- dbConnect(RPostgreSQL::PostgreSQL(),  host = "XXX",dbname="XXX", user = "XXX", password = "XXX" )
   #   # corpus <- dbGetQuery(conexion3,"select * from grupos")
   #   # dbDisconnect(conexion3)
   #   #
@@ -1256,7 +1256,7 @@ corps <- reactiveValues(prueba = NULL)
 
 corpusstats <- reactive({
   
-  conexioncorpus <- dbConnect(RPostgreSQL::PostgreSQL(), host = "pgsql03.dinaserver.com",dbname="esvoralstats_aroca", user = "oralstats", host = "XXX",dbname="XXX", user = "XXX", password = "XXX" = "TBoj2J/3-17/")
+  conexioncorpus <- dbConnect(RPostgreSQL::PostgreSQL(),  host = "XXX",dbname="XXX", user = "XXX", password = "XXX" )
   corpus <- dbGetQuery(conexioncorpus,"select hablantes.grupos,hablantes.intervenciones,hablantes.palabras,hablantes.spk,edad,sexo,nivel, conversaciones.source as conversacion, conversaciones.ciudad from hablantes left join  conversaciones on hablantes.source = conversaciones.source ")
   dbDisconnect(conexioncorpus)
   corpus
@@ -1289,7 +1289,7 @@ output$completestats <- renderDT(corpusstatscomplete())
   values <- reactiveValues(df_data = NULL)
   
   observeEvent(input$sahe,{
-    conexionsahe <- dbPool(RPostgreSQL::PostgreSQL(), host = "pgsql03.dinaserver.com",dbname="esvoralstats_aroca", user = "oralstats", host = "XXX",dbname="XXX", user = "XXX", password = "XXX" = "TBoj2J/3-17/")
+    conexionsahe <- dbPool(RPostgreSQL::PostgreSQL(),  host = "XXX",dbname="XXX", user = "XXX", password = "XXX" )
 
     corpus2 <- conexionsahe%>%tbl("hablantes")
 
@@ -1311,7 +1311,7 @@ output$completestats <- renderDT(corpusstatscomplete())
 
 sahelanthropusgrupos <- eventReactive(input$sahe,{values$prueba})
 # output$pruebasahe <- renderDT({sahelanthropusgrupos()})
-  #dbConnect(RPostgreSQL::PostgreSQL(), host = "pgsql03.dinaserver.com",dbname="esvoralstats_aroca", user = "oralstats", host = "XXX",dbname="XXX", user = "XXX", password = "XXX" = "TBoj2J/3-17/")
+  #dbConnect(RPostgreSQL::PostgreSQL(),  host = "XXX",dbname="XXX", user = "XXX", password = "XXX" )
   # corpus2 <- dbGetQuery(conexionsahe,"select spk,sexo,nivel,edad from hablantes ")
   # corpus3 <- dbGetQuery(conexionsahe,"select * from grupos")
   # corpus4 <- dbGetQuery(conexionsahe,"select * from conversaciones")
@@ -1480,7 +1480,7 @@ output$totales <- renderValueBox({ valueBox(
 
 grupos <- eventReactive(input$furiousbttn,{
 
-conexiongrupos <- dbConnect(RPostgreSQL::PostgreSQL(), host = "pgsql03.dinaserver.com",dbname="esvoralstats_aroca", user = "oralstats", host = "XXX",dbname="XXX", user = "XXX", password = "XXX" = "TBoj2J/3-17/")
+conexiongrupos <- dbConnect(RPostgreSQL::PostgreSQL(),  host = "XXX",dbname="XXX", user = "XXX", password = "XXX" )
 q <- input$conversselect
 grupos <- dbGetQuery(conexiongrupos,paste0("select * from grupos where source ='",input$conversselect,"'"))
 dbDisconnect(conexiongrupos)
@@ -1663,7 +1663,7 @@ output$downloadconcord <- downloadHandler(
 ngrams <- eventReactive(input$ngrambttn,{
   req(input$filterngrams1)
   if(input$filterngrams2=="ngrama3"){
-    conexion2 <- dbConnect(RPostgreSQL::PostgreSQL(), host = "pgsql03.dinaserver.com",dbname="esvoralstats_aroca", user = "oralstats", host = "XXX",dbname="XXX", user = "XXX", password = "XXX" = "TBoj2J/3-17/")
+    conexion2 <- dbConnect(RPostgreSQL::PostgreSQL(),  host = "XXX",dbname="XXX", user = "XXX", password = "XXX" )
     ngramstbl <- tbl(conexion2,"palabras")
     spktbl <- tbl(conexion2,"hablantes")
     convtbl <- tbl(conexion2,"conversaciones")
@@ -1672,7 +1672,7 @@ ngrams <- eventReactive(input$ngrambttn,{
     ngramstotal <- ngramstbl%>%left_join(spktbl%>%select(sexo,edad,nivel,spk),by="spk")%>%left_join(convtbl%>%select(source,ciudad),by="source")%>%mutate(seleccionado=paste(!!!input$filterngrams1,sep="_"))%>%group_by(seleccionado)%>%summarise(total=n())%>%collect()
     ngrams2 <- ngrams%>%left_join(ngramstotal,by="seleccionado")%>%mutate(frecrel= round((frecuencia/total)*1000000),2)%>%arrange(desc(frecrel))
     dbDisconnect(conexion2)
-    ngrams2%>%mutate(seleccionado=as.factor(seleccionado))%>%select(seleccionado,ngram,frecuencia,frecrel)%>%slice_head(n=100)} else if(input$filterngrams2=="ngrama2"){conexion2 <- dbConnect(RPostgreSQL::PostgreSQL(), host = "pgsql03.dinaserver.com",dbname="esvoralstats_aroca", user = "oralstats", host = "XXX",dbname="XXX", user = "XXX", password = "XXX" = "TBoj2J/3-17/")
+    ngrams2%>%mutate(seleccionado=as.factor(seleccionado))%>%select(seleccionado,ngram,frecuencia,frecrel)%>%slice_head(n=100)} else if(input$filterngrams2=="ngrama2"){conexion2 <- dbConnect(RPostgreSQL::PostgreSQL(),  host = "XXX",dbname="XXX", user = "XXX", password = "XXX" )
     ngramstbl <- tbl(conexion2,"palabras")
     spktbl <- tbl(conexion2,"hablantes")
     convtbl <- tbl(conexion2,"conversaciones")
@@ -1683,7 +1683,7 @@ ngrams <- eventReactive(input$ngrambttn,{
     dbDisconnect(conexion2)
     ngrams2%>%mutate(seleccionado=as.factor(seleccionado))%>%select(seleccionado,ngram,frecuencia,frecrel)%>%slice_head(n=100)} else if (input$filterngrams2=="ngrama4"){
       
-      conexion2 <- dbConnect(RPostgreSQL::PostgreSQL(), host = "pgsql03.dinaserver.com",dbname="esvoralstats_aroca", user = "oralstats", host = "XXX",dbname="XXX", user = "XXX", password = "XXX" = "TBoj2J/3-17/")
+      conexion2 <- dbConnect(RPostgreSQL::PostgreSQL(),  host = "XXX",dbname="XXX", user = "XXX", password = "XXX" )
       ngramstbl <- tbl(conexion2,"palabras")
       spktbl <- tbl(conexion2,"hablantes")
       convtbl <- tbl(conexion2,"conversaciones")
@@ -1696,7 +1696,7 @@ ngrams <- eventReactive(input$ngrambttn,{
     }
   else{
     
-    conexion2 <- dbConnect(RPostgreSQL::PostgreSQL(), host = "pgsql03.dinaserver.com",dbname="esvoralstats_aroca", user = "oralstats", host = "XXX",dbname="XXX", user = "XXX", password = "XXX" = "TBoj2J/3-17/")
+    conexion2 <- dbConnect(RPostgreSQL::PostgreSQL(),  host = "XXX",dbname="XXX", user = "XXX", password = "XXX" )
     ngramstbl <- tbl(conexion2,"palabras")
     spktbl <- tbl(conexion2,"hablantes")
     convtbl <- tbl(conexion2,"conversaciones")
@@ -1718,7 +1718,7 @@ output$ngrams <- renderDT(datatable(ngrams(),filter = list(position = 'top', cle
 prosodia <- eventReactive(input$prosodiabttn,{
   
   
-  conexion2 <- dbConnect(RPostgreSQL::PostgreSQL(), host = "pgsql03.dinaserver.com",dbname="esvoralstats_aroca", user = "oralstats", host = "XXX",dbname="XXX", user = "XXX", password = "XXX" = "TBoj2J/3-17/")
+  conexion2 <- dbConnect(RPostgreSQL::PostgreSQL(),  host = "XXX",dbname="XXX", user = "XXX", password = "XXX" )
   # grupostbl <- tbl(conexion2,"grupos")
   spktbl <- tbl(conexion2,"hablantes")
   convtbl <- tbl(conexion2,"conversaciones")
@@ -1763,7 +1763,7 @@ output$prosodiastats2 <- renderPrint({
 
 conve <- reactive({
   
-  conexion2 <- dbConnect(RPostgreSQL::PostgreSQL(), host = "pgsql03.dinaserver.com",dbname="esvoralstats_aroca", user = "oralstats", host = "XXX",dbname="XXX", user = "XXX", password = "XXX" = "TBoj2J/3-17/")
+  conexion2 <- dbConnect(RPostgreSQL::PostgreSQL(),  host = "XXX",dbname="XXX", user = "XXX", password = "XXX" )
   # grupostbl <- tbl(conexion2,"grupos")
   spktbl <- tbl(conexion2,"hablantes")
   spk <- spktbl%>%collect()
