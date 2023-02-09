@@ -1,33 +1,41 @@
 <img src="images/aroca.png" alt="drawing" width="160"/> 
 
-# Description
+# **Introduction**
 
-Oralstats Aroca is a simplification of the main features of Oralstats (Cabedo 2021). The basic aim is to allow researchers to query and download data from Ameresco Speech Oral Corpus (Albelda and Estellés, online, and freely available at www.corpusameresco.com), but also offering researchers the option to use Aroca to query and download data from their personal corpora. The SQL database backend is highly extensible and customizable.
+Oralstats Aroca is a tool designed to simplify the process of querying and downloading data from speech corpora. It provides researchers with the ability to query and download data from the Ameresco Speech Oral Corpus (available at [**www.corpusameresco.com**](http://www.corpusameresco.com/)) as well as personal corpora. With a highly extensible and customizable SQL database backend, Oralstats Aroca offers an efficient and user-friendly experience for researchers.
 
-# Online version
+# **Live Version**
 
-You can see the script working with Ameresco Corpus at the following link:
+You can see the script in action using the Ameresco Corpus at the following link:
 
-https://adrin-cabedo.shinyapps.io/aroca_viewer/
+[**https://adrin-cabedo.shinyapps.io/aroca_viewer/**](https://adrin-cabedo.shinyapps.io/aroca_viewer/)
 
-# Citation
+# **Citation**
 
-Cabedo, A. & Carcelén, A. (2021). Oralstats Aroca. Version beta 1.2. Available online at [https://github.com/acabedo/aroca](https://github.com/acabedo/aroca)
+If you use Oralstats Aroca in your research, please cite the following publication:
 
-# Tutorial (using Aroca)
+Cabedo, A. & Carcelén, A. (2021). Oralstats Aroca. Version beta 1.2. Available online at [**https://github.com/acabedo/aroca**](https://github.com/acabedo/aroca)
 
-You can check a brief tutorial convering the main usage of Oralstats Aroca at https://github.com/acabedo/aroca/tree/main/tutorial
+# **Tutorial**
 
-# Requirements
+A tutorial covering the basic usage of Oralstats Aroca is available at [**https://github.com/acabedo/aroca/tree/main/tutorial**](https://github.com/acabedo/aroca/tree/main/tutorial). Additionally, a video demonstrating the transformation module of Oralstats on a sample from the Ameresco corpus can be found at [**https://youtu.be/KWzvIrh-980**](https://youtu.be/KWzvIrh-980).
 
-1. Basic knowledge of R (and specifically Shiny)
-2. Basic knowledge of SQL language.
-3. SQL database (PostgreSQL, SQlite, MySQL...).
-4. Optional (but recommended): data processed and converted with Oralstats transformation module.
+# **Requirements**
 
-# Contact
+To use Oralstats Aroca, you should have the following:
 
-Any doubt or suggestion? Just contact us: adrian.cabedo@uv.es / andrea.carcelen@uv.es
+1.  Basic knowledge of R (specifically Shiny)
+
+2.  Basic knowledge of SQL language
+
+3.  A SQL database (e.g. PostgreSQL, SQlite, MySQL)
+
+4.  (Optional but recommended) Data processed and converted using the Oralstats transformation module. The creacion.zip file [[**https://github.com/acabedo/aroca/blob/main/creacion.zip**](https://github.com/acabedo/aroca/blob/main/creacion.zip)] can be downloaded and the oralstats_creacion.app file executed for this purpose. Sample files are included in the txt, pitch, and intensity folders for use as examples.
+
+# **Contact**
+
+If you have any questions or suggestions, please feel free to contact us at: [**adrian.cabedo\@uv.es**](mailto:adrian.cabedo@uv.es) / [**andrea.carcelen\@uv.es**](mailto:andrea.carcelen@uv.es)
+
 
 # License
 
