@@ -2,7 +2,7 @@
 
 # **Introduction**
 
-Oralstats Aroca is a tool designed to simplify the process of querying and downloading data from speech corpora. It provides researchers with the ability to query and download data from the Ameresco Speech Oral Corpus (available at [**www.corpusameresco.com**](http://www.corpusameresco.com/)) as well as personal corpora. With a highly extensible and customizable SQL database backend, Oralstats Aroca offers an efficient and user-friendly experience for researchers.
+Oralstats Aroca is a tool designed to simplify the process of querying and downloading data from speech corpora. It has been designed originally to provide researchers with the ability to query and download data from the Ameresco Speech Oral Corpus (available at [**www.corpusameresco.com**](http://www.corpusameresco.com/)) as well as personal corpora. With a highly extensible and customizable SQL database backend, you can use Oralstats Aroca to create reference material from your transcripts; and with the generated data you can also use the Oralstats module in its core version. Basically, Oralstats Aroca offers an efficient and user-friendly experience for researchers.
 
 # **Live Version**
 
@@ -22,7 +22,7 @@ A tutorial covering the basic usage of Oralstats Aroca is available at [**https:
 
 # **Requirements**
 
-To use Oralstats Aroca, you should have the following:
+To use Oralstats Aroca with your own corpus, you should have the following:
 
 1.  Basic knowledge of R (specifically Shiny)
 
@@ -30,7 +30,7 @@ To use Oralstats Aroca, you should have the following:
 
 3.  A SQL database (e.g. PostgreSQL, SQlite, MySQL)
 
-4.  (Optional but recommended) Data processed and converted using the Oralstats transformation module. The creacion.zip file [[**https://github.com/acabedo/aroca/blob/main/creacion.zip**](https://github.com/acabedo/aroca/blob/main/creacion.zip)] can be downloaded and the oralstats_creacion.app file executed for this purpose. Sample files are included in the txt, pitch, and intensity folders for use as examples.
+4.  (Optional but recommended) Data processed and converted using the Oralstats transformation module. The creacion.zip file [[**https://github.com/acabedo/aroca/blob/main/creacion.zip**](https://github.com/acabedo/aroca/blob/main/creacion.zip)] can be downloaded and the oralstats_creacion.app file executed for this purpose. Sample files are included in the txt, pitch, and intensity folders for use as examples. You can see it working at https://youtu.be/KWzvIrh-980. 
 
 # **Contact**
 
