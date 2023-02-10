@@ -1,4 +1,8 @@
-<img src="images/aroca.png" alt="drawing" width="160"/> 
+<img src="images/aroca.png" alt="drawing" width="160"/>
+
+[![DOI](https://zenodo.org/badge/581049532.svg)](https://zenodo.org/badge/latestdoi/581049532)
+
+
 
 # **Introduction**
 
